@@ -6,17 +6,43 @@ using std::cin;
 using std::cout;
 using std::endl; 
 
-// Decalre prototypes
-double addition();
-double subtraction();
-double multiplication();
-double division();
+// Decalre prototypes and variables
+void addition();
+void subtraction();
+void multiplication();
+void division();
+void userSelection();
+
+int selection;
+int num, denomin;
+
+int a; // Numerator for 1st number
+int b; // Denominator for 1st number
+int c; // Numerator for 2nd number
+int d; // Denominator for 2nd number
 
 int main()
 {
 	char answer = 'Y';
+
 	do
 	{
+		cout << "Enter the numerator for 1st number  : ";
+		cin >> a;
+		cout << "Enter the denominator for 1st number : ";
+		cin >> b;
+		cout << "Enter the numerator for 2nd number : ";
+		cin >> c;
+		cout << "Enter the denominator for 2nd number : ";
+		cin >> d;
+
+		cout << "Press 1 to add, Press 2 to subtract, Press 3 to multiply or Press 4 to divide: ";
+		cin >> selection;
+
+		userSelection();
+
+		cout << num << "/" << denomin;
+
 		cout << endl << "One more time (Y/N)? ";
 		cin >> answer;
 		cout << endl;
@@ -24,34 +50,47 @@ int main()
 	return 0;
 }
 
-int iuserInput()
+void userSelection()
 {
-	int firstFraction;
-	int secondFraction;
-
-	cout << "Enter first fraction: " << endl;
-	cin >> firstFraction;
-
-	cout << "Enter second fraction: " << endl;
-	cin >> secondFraction;
+	switch (selection)
+	{
+	case 1:
+		addition();
+		break;
+	case 2:
+		subtraction();
+		break;
+	case 3:
+		multiplication();
+		break;
+	case 4:
+		division();
+		break;
+	}
 }
 
-double addition()
+void addition()
 {
-
+	num = (a * d) + (b * c);
+	denomin = b * d;
 }
 
-double subtraction()
+void subtraction()
 {
-
+	num = (a * c) - (b * d);
+	denomin = b * c;
 }
 
-double multiplication()
+void multiplication()
 {
-
+	num = a * c;
+	denomin = b * d;
 }
 
-double division()
+void division()
 {
+	int fraction;
 
+	num = a * c;
+	denomin = b * d;
 }
