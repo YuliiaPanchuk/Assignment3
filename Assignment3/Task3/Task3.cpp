@@ -1,6 +1,34 @@
 #include <iostream>
+#include <cmath> // Using abs (absolute)
 using std::cout;
 using std::endl;
+
+// The function definition for power
+double power(double base, double exp = 2)
+{
+	bool sing = exp > 0;
+	double result = 1;
+
+	// For negative number
+	if (!sing)
+	{
+		exp *= -1;
+	}
+
+	// Calculation
+	for (double i = 1; i <= exp; i++)
+	{
+		if (sing)
+		{
+			result *= base;
+		}
+		else
+		{
+			result /= base;
+		}
+	}
+	return result;
+}
 
 int main()
 {
@@ -12,15 +40,4 @@ int main()
 	cout << power(4) << endl; // will print 16
 	cout << power(5) << endl; // will print 25
 	return 0;
-}
-
-// The function definition for power
-int power(v, p)
-{
-	double result = v;
-	for (double i = 0; i < p; i++)
-	{
-		result *= v;
-	}
-	return result;
 }

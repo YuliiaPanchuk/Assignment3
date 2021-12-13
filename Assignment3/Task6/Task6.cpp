@@ -27,6 +27,8 @@ int main()
 
 	do
 	{
+		system("CLS");
+
 		cout << "Enter the numerator for 1st number  : ";
 		cin >> a;
 		cout << "Enter the denominator for 1st number : ";
@@ -36,7 +38,11 @@ int main()
 		cout << "Enter the denominator for 2nd number : ";
 		cin >> d;
 
-		cout << "Press 1 to add, Press 2 to subtract, Press 3 to multiply or Press 4 to divide: ";
+		cout << "Press 1 to add" << endl;
+		cout << "Press 2 to subtract" << endl; 
+		cout << "Press 3 to multiply" << endl;
+		cout << "Press 4 to divide" << endl;
+		cout << "Your choice: ";
 		cin >> selection;
 
 		userSelection();
@@ -48,6 +54,18 @@ int main()
 		cout << endl;
 	} while (toupper(answer) == 'Y');
 	return 0;
+}
+
+// Reducing fraction
+void reduce_fraction()
+{
+	// Does not handel negative values
+	for (int i = denomin * num; i > 1; i--) {
+		if ((denomin % i == 0) && (num % i == 0)) {
+			denomin /= i;
+			num /= i;
+		}
+	}
 }
 
 void userSelection()
@@ -67,7 +85,11 @@ void userSelection()
 		division();
 		break;
 	}
+
+	// Reducing fraction
+	reduce_fraction();
 }
+
 
 void addition()
 {
@@ -77,8 +99,8 @@ void addition()
 
 void subtraction()
 {
-	num = (a * c) - (b * d);
-	denomin = b * c;
+	num = (a * d) - (c * b);
+	denomin = b * d;
 }
 
 void multiplication()
@@ -89,8 +111,6 @@ void multiplication()
 
 void division()
 {
-	int fraction;
-
-	num = a * c;
-	denomin = b * d;
+	num = a * d;
+	denomin = b * c;
 }
